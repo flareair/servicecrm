@@ -1,0 +1,23 @@
+{
+    "name": "yaroslav/servicecrm",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "flareair",
+            "email": "flareair0@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*"
+    },
+    "require-dev": {
+
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
