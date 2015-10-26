@@ -9,44 +9,20 @@ return [
         // ],
         'db' => require(__DIR__ . '/db.php'),
         'request' => [
-            'cookieValidationKey' => 'secret',
+            'cookieValidationKey' => 'secret123123',
+            // 'baseUrl' => '/'
         ],
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
-            'showScriptName' => false
-        ],
-        'view' => [
-            'renderers' => [
-                'md' => [
-                    'class' => 'app\utilities\MarkdownRenderer'
-                ],
+            'showScriptName' => false,
+            'baseUrl' => '/',
+            // 'enableStrictParsing' => true,
+            'rules' => [
+                '/' => 'site/index',
+                'country' => '/country/index',
             ],
         ],
-        'response' => [
-            'formatters' => [
-                'yaml' => [
-                    'class' => 'app\utilities\YamlResponseFormatter'
-                ],
-            ],
-        ],
-        // 'user' => [
-        //     'identityClass' => 'app\models\user\UserRecord'
-        // ]
     ],
-    // 'modules' => [
-    //     'gii' => [
-    //         'class' => 'yii\gii\Module',
-    //         'allowedIPs' => ['*']
-    //     ],
-    //     'firstlevel' => [
-    //         'class' => 'app\utilities\FirstModule',
-    //         'modules' => [
-    //             'secondlevel' => [
-    //                 'class' => 'app\utilities\SecondModule',
-    //             ]
-    //         ]
-    //     ],
-
-    // ],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php')
 ];

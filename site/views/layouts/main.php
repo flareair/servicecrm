@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
 \yii\bootstrap\BootstrapAsset::register($this);
 \yii\web\YiiAsset::register($this);
 
@@ -16,6 +18,24 @@ use yii\helpers\Html;
 </head>
 <body>
 <?php $this->beginBody() ?>
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'Service CRM',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-default',
+        ],
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'items' => [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Country', 'url' => ['/country/index']],
+        ],
+    ]);
+    NavBar::end();
+    ?>
+
     <div class="container">
         <?= $content ?>
     </div>
