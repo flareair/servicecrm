@@ -25,9 +25,17 @@ class m151026_135904_add_user_table extends Migration
     {
         $this->createTable('user', [
                 'id' => 'pk',
-                'username' => 'string unique',
-                'password' => 'string',
-                'auth_key' => 'string unique'
+                'username' => $this->string(30)->unique(),
+                'password' => $this->string(),
+                'auth_key' => $this->string()->unique(),
+                'firstname' => $this->string(),
+                'middlename' => $this->string(),
+                'lastname' => $this->string(),
+                'company_name' => $this->string(),
+                'email' => $this->string()->unique(),
+                'phone' => $this->string()->unique(),
+                'address' => $this->text(),
+                'about' => $this->text(),
 
             ],
             'ENGINE=InnoDB'
