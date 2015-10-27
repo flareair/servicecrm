@@ -36,17 +36,6 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionEntry()
-    {
-        $model = new EntryForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            return $this->render('entry-confirm', ['model' => $model]);
-        } else {
-            return $this->render('entry', ['model' => $model]);
-        }
-    }
-
     public function actionLogin()
     {
 
