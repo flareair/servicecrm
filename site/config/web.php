@@ -22,7 +22,6 @@ return [
             // 'enableStrictParsing' => true,
             'rules' => [
                 '/' => 'site/index',
-                'country' => '/country/index',
                 'login' => '/site/login',
             ],
         ],

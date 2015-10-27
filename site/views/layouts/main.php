@@ -30,7 +30,7 @@ use yii\bootstrap\Nav;
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Country', 'url' => ['/country/index']],
+            // add new menus here
         ],
     ]);
     echo Nav::widget([
