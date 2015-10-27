@@ -33,6 +33,26 @@ use yii\bootstrap\Nav;
             ['label' => 'Country', 'url' => ['/country/index']],
         ],
     ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : ''
+        ],
+    ]);
+    if (!Yii::$app->user->isGuest) {
+        echo Html::beginForm(
+            ['/site/logout'],
+            'post',
+            [
+                'class' => 'navbar-form navbar-right'
+            ]
+        );
+        echo Html::submitButton(
+            'Logout (' . Html::encode(Yii::$app->user->identity->username) . ')',
+            ['class' => 'btn btn-link']
+        );
+        echo Html::endForm();
+    }
     NavBar::end();
     ?>
 

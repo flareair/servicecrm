@@ -7,6 +7,9 @@ return [
         //     'class' => 'yii\rbac\DbManager',
         //     // 'defaultRoles' => ['guest'],
         // ],
+        'user' => [
+            'identityClass' => 'app\models\user\User',
+        ],
         'db' => require(__DIR__ . '/db.php'),
         'request' => [
             'cookieValidationKey' => 'secret123123',
@@ -21,6 +24,7 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 'country' => '/country/index',
+                'login' => '/site/login',
             ],
         ],
     ],

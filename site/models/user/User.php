@@ -1,5 +1,7 @@
 <?php
 
+namespace app\models\user;
+
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use Yii;
@@ -14,8 +16,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['login', 'password', 'auth_key'], 'string', 'max' => 255],
-            [['login'], 'unique']
+            [['username', 'password', 'auth_key'], 'string', 'max' => 255],
+            [['username'], 'unique']
         ];
     }
 
