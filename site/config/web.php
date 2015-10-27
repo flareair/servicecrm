@@ -3,10 +3,9 @@ return [
     'id' => 'servicecrm',
     'basePath' => realpath(__DIR__ . '/../'),
     'components' => [
-        // 'authManager' => [
-        //     'class' => 'yii\rbac\DbManager',
-        //     // 'defaultRoles' => ['guest'],
-        // ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'user' => [
             'identityClass' => 'app\models\user\User',
         ],
