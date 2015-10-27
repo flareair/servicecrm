@@ -6,9 +6,31 @@ use app\models\forms\EntryForm;
 use app\models\user\LoginForm;
 use yii\web\Controller;
 use Yii;
+use yii\filters\AccessControl;
 
 class SiteController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['user']
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['login'],
+                        'roles' => ['?']
+                    ]
+                ]
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

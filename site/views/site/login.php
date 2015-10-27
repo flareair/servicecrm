@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-
+<h2>Please sing in</h2>
 <?php $form = ActiveForm::begin(); ?>
 
     <?=$form->field($model, 'username'); ?>

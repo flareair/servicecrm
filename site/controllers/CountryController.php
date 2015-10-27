@@ -5,9 +5,26 @@ namespace app\controllers;
 use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\country\Country;
+use yii\filters\AccessControl;
 
 class CountryController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['user']
+                    ]
+                ]
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
         $query = Country::find();
