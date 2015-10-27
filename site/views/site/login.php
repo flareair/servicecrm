@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = 'Login | Service CRM'
+
 ?>
 <h2>Please sing in</h2>
 <?php $form = ActiveForm::begin(); ?>
