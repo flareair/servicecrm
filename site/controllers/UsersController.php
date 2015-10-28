@@ -50,6 +50,13 @@ class UsersController extends Controller
         }
     }
 
+    public function actionDelete($id)
+    {
+        $this->findUser($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
     protected function findUser($id)
     {
         if (($model = User::findOne($id)) !== null) {
