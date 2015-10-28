@@ -30,6 +30,7 @@ use yii\bootstrap\Nav;
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Users', 'url' => ['/users/index']],
             // add new menus here
         ],
     ]);

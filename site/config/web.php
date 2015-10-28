@@ -23,6 +23,7 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 'login' => '/site/login',
+                'users' => '/users/index',
             ],
         ],
     ],
