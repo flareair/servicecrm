@@ -13,6 +13,9 @@ class UserSearchModel extends User
     {
         return [
             [['username'], 'safe'],
+            [['firstname'], 'safe'],
+            [['lastname'], 'safe'],
+            [['company_name'], 'safe'],
         ];
     }
     public function search($params)
@@ -35,11 +38,10 @@ class UserSearchModel extends User
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
-            'username' => $this->username,
-        ]);
-
         $query->andFilterWhere(['like', 'username', $this->username]);
+        $query->andFilterWhere(['like', 'firstname', $this->firstname]);
+        $query->andFilterWhere(['like', 'lastname', $this->lastname]);
+        $query->andFilterWhere(['like', 'company_name', $this->company_name]);
 
         return $dataProvider;
     }
