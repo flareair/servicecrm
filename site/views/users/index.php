@@ -5,9 +5,12 @@ use yii\grid\GridView;
 
 ?>
 
+<h1>List of users</h1>
+
 <?= GridView::widget([
-    'dataProvider' => $users,
-    // 'filterModel' => $searchModel,
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'summary' => 'Showing {begin}-{end} of {totalCount} users.',
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         'id',

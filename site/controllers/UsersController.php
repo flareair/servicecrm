@@ -3,37 +3,25 @@
 namespace app\controllers;
 
 use yii\web\Controller;
-use yii\data\ArrayDataProvider;
 use app\models\user\User;
+use app\models\user\UserSearchModel;
 use yii\web\NotFoundHttpException;
+use Yii;
 
 class UsersController extends Controller
 {
     public function actionIndex()
     {
-        $query = User::find();
+        $searchModel = new UserSearchModel();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $users = $query->orderBy('username')->all();
-
-        $users = $this->wrapIntoDataProvider($users);
-        return $this->render('index', compact('users'));
+        return $this->render('index', compact('searchModel', 'dataProvider'));
     }
 
     public function actionView($id)
     {
         return $this->render('view', [
             'model' => $this->findUser($id),
-        ]);
-    }
-
-    protected function wrapIntoDataProvider($data)
-    {
-        return new ArrayDataProvider([
-            'allModels' => $data,
-            'pagination' => [
-                'pageSize' => 25
-            ],
-            'key' => 'id'
         ]);
     }
 
