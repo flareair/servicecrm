@@ -10,14 +10,24 @@ class m151026_135904_add_user_table extends Migration
         [
             'username' => 'admin',
             'password' => '1234',
+            'firstname' => 'Administrator',
+            'email' => 'admin@admin.ru'
         ],
         [
             'username' => 'serviceman',
             'password' => '1234',
+            'firstname' => 'Vasily',
+            'lastname' => 'Fedorov',
+            'company_name' => 'OOO STO-GAZ',
+            'email' => 'vasily@fedorov.ru'
         ],
         [
             'username' => 'user',
             'password' => '1234',
+            'firstname' => 'Ivan',
+            'lastname' => 'Petrov',
+            'company_name' => 'IP Petrov',
+            'email' => 'ivan@petrov.com'
         ]
     ];
 
