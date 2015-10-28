@@ -38,6 +38,18 @@ class UsersController extends Controller
         }
     }
 
+    public function actionUpdate($id)
+    {
+        $model = $this->findUser($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     protected function findUser($id)
     {
         if (($model = User::findOne($id)) !== null) {
