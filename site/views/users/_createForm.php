@@ -13,7 +13,15 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'username') ?>
 
     <?= $form->field($model, 'password')->passwordInput() ?>
-    <?= $form->field($model, 'role') ?>
+    <?php if (Yii::$app->user->can('manageAccounts')): ?>
+    <?= $form->field($model, 'role')->dropDownList(
+        [
+            'user' => 'user',
+            'serviceman' => 'serviceman',
+            'admin' => 'admin',
+        ]
+    ) ?>
+    <? endif; ?>
     <?= $form->field($model, 'firstname') ?>
     <?= $form->field($model, 'middlename') ?>
     <?= $form->field($model, 'lastname') ?>
