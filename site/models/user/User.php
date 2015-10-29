@@ -54,11 +54,13 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function afterSave($insert, $changedAttributes){
         parent::afterSave($insert, $changedAttributes);
-        // need to rework this, role upgrades every time
-        $rbac = Yii::$app->authManager;
-        $roleName = !empty($this->role) ? $this->role : 'user';
-        $role = $rbac->getRole($roleName);
-        $rbac->assign($role, $this->getId());
+        if (in_array('role', array_keys($changedAttributes))) {
+            $rbac = Yii::$app->authManager;
+            $roleName = !empty($this->role) ? $this->role : 'user';
+            $role = $rbac->getRole($roleName);
+            $rbac->revokeAll($this->getId());
+            $rbac->assign($role, $this->getId());
+        }
     }
 
     public static function findIdentity($id)
