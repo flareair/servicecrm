@@ -13,6 +13,7 @@ class UserSearchModel extends User
     {
         return [
             [['username'], 'safe'],
+            [['role'], 'safe'],
             [['firstname'], 'safe'],
             [['lastname'], 'safe'],
             [['company_name'], 'safe'],
@@ -38,7 +39,12 @@ class UserSearchModel extends User
             return $dataProvider;
         }
 
+        if (!Yii::$app->user->can('manageAccounts')) {
+            $query->andFilterWhere(['role' => 'user']);
+        }
+
         $query->andFilterWhere(['like', 'username', $this->username]);
+        $query->andFilterWhere(['like', 'role', $this->role]);
         $query->andFilterWhere(['like', 'firstname', $this->firstname]);
         $query->andFilterWhere(['like', 'lastname', $this->lastname]);
         $query->andFilterWhere(['like', 'company_name', $this->company_name]);
