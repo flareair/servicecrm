@@ -6,6 +6,7 @@ use yii\web\Controller;
 use app\models\user\User;
 use app\models\user\UserSearchModel;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use Yii;
 
 class UsersController extends Controller
@@ -20,6 +21,9 @@ class UsersController extends Controller
 
     public function actionView($id)
     {
+        if (!Yii::$app->user->can('manageAccounts', ['id' => $id])) {
+            throw new ForbiddenHttpException('You not allowed to view this page.');
+        }
         return $this->render('view', [
             'model' => $this->findUser($id),
         ]);
@@ -40,6 +44,9 @@ class UsersController extends Controller
 
     public function actionUpdate($id)
     {
+        if (!Yii::$app->user->can('manageAccounts', ['id' => $id])) {
+            throw new ForbiddenHttpException('You not allowed to view this page.');
+        }
         $model = $this->findUser($id);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -52,6 +59,9 @@ class UsersController extends Controller
 
     public function actionDelete($id)
     {
+        if (!Yii::$app->user->can('manageAccounts', ['id' => $id])) {
+            throw new ForbiddenHttpException('You not allowed to view this page.');
+        }
         $this->findUser($id)->delete();
 
         return $this->redirect(['index']);
