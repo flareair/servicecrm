@@ -26,11 +26,18 @@ use yii\bootstrap\Nav;
             'class' => 'navbar-default',
         ],
     ]);
+    // $mainNavItems = [
+    //     ['label' => 'Home', 'url' => ['/site/index']],
+    // ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Users', 'url' => ['/users/index']],
+            [
+                'label' => 'Users',
+                'url' => ['/users/index'],
+                'visible' => Yii::$app->user->can('viewOnlyUsers')
+            ],
             // add new menus here
         ],
     ]);

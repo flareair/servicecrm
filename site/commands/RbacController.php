@@ -44,14 +44,20 @@ class RbacController extends Controller
         $rule = new ManageOnlyUsersRule();
         $rbac->add($rule);
 
+        $viewUsers = $rbac->createPermission('viewOnlyUsers');
+
         $manageOnlyUsers = $rbac->createPermission('manageOnlyUsers');
         $manageOnlyUsers->ruleName = $rule->name;
 
         $manageAllAccounts = $rbac->createPermission('manageAccounts');
 
+        $rbac->add($viewUsers);
         $rbac->add($manageOnlyUsers);
         $rbac->add($manageAllAccounts);
+
         $rbac->addChild($manageOnlyUsers, $manageAllAccounts);
+        $rbac->addChild($viewUsers, $manageOnlyUsers);
+
 
         $user = $rbac->createRole('user');
         $user->description = 'Can view his cars';
@@ -62,6 +68,7 @@ class RbacController extends Controller
         $rbac->add($serviceMan);
         $rbac->addChild($serviceMan, $user);
         $rbac->addChild($serviceMan, $manageOnlyUsers);
+        $rbac->addChild($serviceMan, $viewUsers);
 
         $admin = $rbac->createRole('admin');
         $admin->description = 'Can do anything';
