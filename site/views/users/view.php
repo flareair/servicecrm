@@ -10,6 +10,7 @@ use yii\helpers\Html;
     'model' => $model,
     'attributes' => [
         'username',
+        'role',
         'firstname',
         'middlename',
         'lastname',

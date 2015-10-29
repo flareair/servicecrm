@@ -9,6 +9,34 @@ use app\rbac\ManageOnlyUsersRule;
 
 class RbacController extends Controller
 {
+        private $users = [
+        [
+            'username' => 'admin',
+            'password' => '1234',
+            'role' => 'admin',
+            'firstname' => 'Administrator',
+            'email' => 'admin@admin.ru'
+        ],
+        [
+            'username' => 'serviceman',
+            'password' => '1234',
+            'role' => 'serviceman',
+            'firstname' => 'Vasily',
+            'lastname' => 'Fedorov',
+            'company_name' => 'OOO STO-GAZ',
+            'email' => 'vasily@fedorov.ru'
+        ],
+        [
+            'username' => 'user',
+            'password' => '1234',
+            'role' => 'user',
+            'firstname' => 'Ivan',
+            'lastname' => 'Petrov',
+            'company_name' => 'IP Petrov',
+            'email' => 'ivan@petrov.com'
+        ]
+    ];
+
     public function actionInit()
     {
         $rbac = \Yii::$app->authManager;
@@ -41,20 +69,14 @@ class RbacController extends Controller
         $rbac->addChild($admin, $serviceMan);
         $rbac->addChild($admin, $manageAllAccounts);
 
+    }
 
-
-        $rbac->assign(
-            $user,
-            User::findOne(['username' => 'user'])->id
-        );
-        $rbac->assign(
-            $serviceMan,
-            User::findOne(['username' => 'serviceman'])->id
-        );
-
-        $rbac->assign(
-            $admin,
-            User::findOne(['username' => 'admin'])->id
-        );
+    public function actionUsers()
+    {
+        foreach ($this->users as $userData) {
+            $user = new User();
+            $user->attributes = $userData;
+            $user->save();
+        }
     }
 }

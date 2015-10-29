@@ -15,8 +15,8 @@ use yii\grid\GridView;
     'summary' => 'Showing {begin}-{end} of {totalCount} users.',
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
-        'id',
         'username',
+        'role',
         'firstname',
         'lastname',
         'company_name',

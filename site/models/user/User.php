@@ -22,6 +22,8 @@ class User extends ActiveRecord implements IdentityInterface
             ],
             [['username', 'password'], 'required'],
             [['username'], 'unique'],
+            [['role'], 'string'],
+            [['role'], 'in', 'range' => ['admin', 'serviceman', 'user']],
             [['firstname'], 'required'],
             [['firstname', 'lastname', 'middlename'], 'string', 'max' => 255],
             [['company_name'], 'string', 'max' => 255],
@@ -50,6 +52,14 @@ class User extends ActiveRecord implements IdentityInterface
         return false;
     }
 
+    public function afterSave($insert, $changedAttributes){
+        parent::afterSave($insert, $changedAttributes);
+        // need to rework this, role upgrades every time
+        $rbac = Yii::$app->authManager;
+        $roleName = !empty($this->role) ? $this->role : 'user';
+        $role = $rbac->getRole($roleName);
+        $rbac->assign($role, $this->getId());
+    }
 
     public static function findIdentity($id)
     {
