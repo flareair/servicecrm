@@ -26,6 +26,18 @@ $config = [
                 'users' => '/users/index',
             ],
         ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logFile' => '@app/runtime/logs/servicecrm.log',
+                    'maxFileSize' => 1024 * 2,
+                    'maxLogFiles' => 20,
+                ],
+            ],
+        ],
     ],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
 ];
