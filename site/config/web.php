@@ -1,5 +1,5 @@
 <?php
-return [
+$config = [
     'id' => 'servicecrm',
     'basePath' => realpath(__DIR__ . '/../'),
     'components' => [
@@ -27,5 +27,16 @@ return [
             ],
         ],
     ],
-    'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php')
+    'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
 ];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class'=>'yii\debug\Module',
+        'allowedIPs'=> ['*']
+    ];
+}
+
+return $config;
