@@ -11,8 +11,6 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username') ?>
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
     <?php if (Yii::$app->user->can('manageAccounts')): ?>
     <?= $form->field($model, 'role')->dropDownList(
         [

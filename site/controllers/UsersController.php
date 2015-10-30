@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
-use yii\web\Controller;
 use app\models\user\User;
 use app\models\user\UserSearchModel;
+use app\models\user\ChangePasswordForm;
+
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
 use yii\filters\AccessControl;
@@ -81,6 +83,26 @@ class UsersController extends Controller
         $this->findUser($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionChangepassword($id)
+    {
+        if (!Yii::$app->user->can('manageAccounts', ['id' => $id])) {
+            throw new ForbiddenHttpException('You not allowed to view this page.');
+        }
+        $model = new ChangePasswordForm();
+        $user = $this->findUser($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user->password = $model->newPassword;
+            $user->save();
+            return $this->redirect(['view?id=' . $id]);
+        } else {
+            return $this->render('changePassword', [
+                'model' => $model,
+            ]);
+        }
+
     }
 
     protected function findUser($id)
