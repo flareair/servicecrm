@@ -16,9 +16,16 @@ class ChangePasswordForm extends Model
         return [
             [['newPassword', 'repeatPassword'], 'required'],
             [
-                ['repeatPassword'], 'compare',
+                ['repeatPassword'], 'compare', 'message' => 'Passwords must be the same',
                 'compareAttribute' => 'newPassword'
             ]
+        ];
+    }
+    public function attributeLabels()
+    {
+        return [
+            'repeatPassword' => 'Repeat new password',
+            'newPassword' => 'New password',
         ];
     }
 }
