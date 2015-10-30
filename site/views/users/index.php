@@ -20,9 +20,15 @@ use yii\grid\GridView;
         'firstname',
         'lastname',
         'company_name',
-
         [
             'class' => 'yii\grid\ActionColumn',
+            'template'=>'{view}{update}{changepassword}{delete}',
+            'headerOptions' => ['width' => '80'],
+            'buttons' => [
+                'changepassword' => function($url, $model, $key) {
+                    return Html::a('<span class="glyphicon glyphicon-cog"></span>', $url, ['title' => 'Change Password']);
+                },
+            ]
         ],
     ],
 ]); ?>
