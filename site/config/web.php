@@ -24,6 +24,7 @@ $config = [
                 '/' => 'site/index',
                 'login' => '/site/login',
                 'users' => '/users/index',
+                'cars' => '/cars/index',
             ],
         ],
         'log' => [
