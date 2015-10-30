@@ -3,9 +3,11 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+$this->title = 'List of users';
+
 ?>
 
-<h1>List of users</h1>
+<h1><?=$this->title ?></h1>
 
 <?= Html::a('Create new user', ['create'], ['class' => 'btn btn-success']) ?>
 

@@ -3,7 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = 'Change password for user ' . Html::encode($userName);
 ?>
+
+<h1><?=$this->title; ?></h1>
 
 <?php $form = ActiveForm::begin(); ?>
 

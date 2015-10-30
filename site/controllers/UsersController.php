@@ -93,6 +93,7 @@ class UsersController extends Controller
         $model = new ChangePasswordForm();
         $user = $this->findUser($id);
 
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user->password = $model->newPassword;
             $user->save();
@@ -100,6 +101,7 @@ class UsersController extends Controller
         } else {
             return $this->render('changePassword', [
                 'model' => $model,
+                'userName' => $user->username
             ]);
         }
 
