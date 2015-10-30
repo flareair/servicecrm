@@ -11,14 +11,17 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'username') ?>
+    <?php if ($model->isNewRecord): ?>
+        <?= $form->field($model, 'password')->passwordInput()?>
+    <? endif; ?>
     <?php if (Yii::$app->user->can('manageAccounts')): ?>
-    <?= $form->field($model, 'role')->dropDownList(
-        [
-            'user' => 'user',
-            'serviceman' => 'serviceman',
-            'admin' => 'admin',
-        ]
-    ) ?>
+        <?= $form->field($model, 'role')->dropDownList(
+            [
+                'user' => 'user',
+                'serviceman' => 'serviceman',
+                'admin' => 'admin',
+            ]
+        ) ?>
     <? endif; ?>
     <?= $form->field($model, 'firstname') ?>
     <?= $form->field($model, 'middlename') ?>
