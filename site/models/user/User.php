@@ -31,7 +31,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['email'], 'required'],
             [['email'], 'email'],
             [['phone'], 'string', 'max' => 20],
-            [['phone'], 'unique']
+            [['phone'], 'unique'],
+            [['phone'], 'required']
         ];
     }
 
@@ -52,7 +53,8 @@ class User extends ActiveRecord implements IdentityInterface
         return false;
     }
 
-    public function afterSave($insert, $changedAttributes){
+    public function afterSave($insert, $changedAttributes)
+    {
         parent::afterSave($insert, $changedAttributes);
         if (in_array('role', array_keys($changedAttributes))) {
             $rbac = Yii::$app->authManager;

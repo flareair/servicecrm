@@ -15,7 +15,8 @@ class RbacController extends Controller
             'password' => '1234',
             'role' => 'admin',
             'firstname' => 'Administrator',
-            'email' => 'admin@admin.ru'
+            'email' => 'admin@admin.ru',
+            'phone' => '332-11-43'
         ],
         [
             'username' => 'serviceman',
@@ -24,7 +25,8 @@ class RbacController extends Controller
             'firstname' => 'Vasily',
             'lastname' => 'Fedorov',
             'company_name' => 'OOO STO-GAZ',
-            'email' => 'vasily@fedorov.ru'
+            'email' => 'vasily@fedorov.ru',
+            'phone' => '(921) 341-55-61'
         ],
         [
             'username' => 'user',
@@ -33,7 +35,8 @@ class RbacController extends Controller
             'firstname' => 'Ivan',
             'lastname' => 'Petrov',
             'company_name' => 'IP Petrov',
-            'email' => 'ivan@petrov.com'
+            'email' => 'ivan@petrov.com',
+            'phone' => '+7 913 111-33-41'
         ]
     ];
 
