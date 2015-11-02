@@ -21,10 +21,13 @@ $this->title = 'List of cars';
         'model',
         'date_in',
         [
-            'label' => 'owner',
+            'label' => 'Owner',
+            'format' => 'raw',
             'value' => function($data) {
-                return $data->ownerprofile->firstname . ' ' .
-                    $data->ownerprofile->lastname;
+                return Html::a(
+                    Html::encode($data->ownerprofile->firstname . ' ' . $data->ownerprofile->lastname),
+                    'users/view?id=' . $data->ownerprofile->id
+                );
             }
         ],
         [
