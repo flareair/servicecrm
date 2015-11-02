@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\service\ServiceRecord */
 /* @var $form yii\widgets\ActiveForm */
@@ -10,27 +10,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username') ?>
-    <?php if ($model->isNewRecord): ?>
-        <?= $form->field($model, 'password')->passwordInput()?>
-    <? endif; ?>
-    <?php if (Yii::$app->user->can('manageAccounts')): ?>
-        <?= $form->field($model, 'role')->dropDownList(
-            [
-                'user' => 'user',
-                'serviceman' => 'serviceman',
-                'admin' => 'admin',
-            ]
-        ) ?>
-    <? endif; ?>
-    <?= $form->field($model, 'firstname') ?>
-    <?= $form->field($model, 'middlename') ?>
-    <?= $form->field($model, 'lastname') ?>
-    <?= $form->field($model, 'company_name') ?>
-    <?= $form->field($model, 'email') ?>
-    <?= $form->field($model, 'phone') ?>
-    <?= $form->field($model, 'address')->textArea(['rows' => '3']) ?>
-    <?= $form->field($model, 'about')->textArea(['rows' => '6']) ?>
+    <?= $form->field($model, 'manufacturer') ?>
+    <?= $form->field($model, 'model') ?>
+    <?= $form->field($model, 'year') ?>
+    <?= $form->field($model, 'date_in') ?>
+    <?= $form->field($model, 'date_out') ?>
+    <?= $form->field($model, 'comment')->textArea(['rows' => '6']) ?>
+    <?= $form->field($model, 'owner')->dropDownList(
+        ArrayHelper::map($users, 'id', 'username')
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

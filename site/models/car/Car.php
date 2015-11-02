@@ -3,7 +3,7 @@
 namespace app\models\car;
 
 use yii\db\ActiveRecord;
-
+use app\models\user\User;
 
 class Car extends ActiveRecord
 {
@@ -22,5 +22,9 @@ class Car extends ActiveRecord
             [['date_in', 'date_out'], 'date', 'format'=>'yyyy-MM-dd hh:mm:ss'],
             [['comment'], 'string']
         ];
+    }
+
+    public function getOwnerprofile() {
+        return $this->hasOne(User::className(), ['id' => 'owner']);
     }
 }

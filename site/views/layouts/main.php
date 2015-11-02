@@ -38,7 +38,7 @@ use yii\bootstrap\Nav;
                 'url' => ['/users/index'],
                 'visible' => Yii::$app->user->can('viewOnlyUsers')
             ],
-            // add new menus here
+            ['label' => 'Cars', 'url' => ['/cars/index']],
         ],
     ]);
     echo Nav::widget([

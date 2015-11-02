@@ -3,8 +3,7 @@
 use yii\widgets\DetailView;
 use yii\helpers\Html;
 
-$this->title = 'View user ' . Html::encode($model->username);
-
+$this->title = 'View car ' . Html::encode("$model->manufacturer $model->model");
 ?>
 
 <h1><?=$this->title; ?></h1>
@@ -12,15 +11,15 @@ $this->title = 'View user ' . Html::encode($model->username);
 <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
-        'username',
-        'role',
-        'firstname',
-        'middlename',
-        'lastname',
-        'company_name',
-        'email',
-        'phone',
-        'address',
-        'about',
+        'manufacturer',
+        'model',
+        'year',
+        'date_in',
+        'date_out',
+        'comment',
+        [
+            'label' => 'owner',
+            'value' => $model->ownerprofile->firstname . ' ' . $model->ownerprofile->lastname
+        ]
     ],
 ]) ?>

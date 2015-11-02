@@ -18,10 +18,15 @@ $this->title = 'List of cars';
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         'manufacturer',
-        // 'role',
-        // 'firstname',
-        // 'lastname',
-        // 'company_name',
+        'model',
+        'date_in',
+        [
+            'label' => 'owner',
+            'value' => function($data) {
+                return $data->ownerprofile->firstname . ' ' .
+                    $data->ownerprofile->lastname;
+            }
+        ],
         [
             'class' => 'yii\grid\ActionColumn'
         ],
