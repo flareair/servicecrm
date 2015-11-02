@@ -9,6 +9,7 @@ class m151026_135904_add_user_table extends Migration
 
     public function up()
     {
+        $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         $this->createTable('user', [
                 'id' => 'pk',
                 'username' => $this->string(30)->unique(),
@@ -25,7 +26,7 @@ class m151026_135904_add_user_table extends Migration
                 'about' => $this->text(),
 
             ],
-            'ENGINE=InnoDB'
+            $tableOptions
         );
 
 

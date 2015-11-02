@@ -7,6 +7,7 @@ class m151030_084542_init_cars_table extends Migration
 {
     public function up()
     {
+        $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         $this->createTable('car', [
                 'id' => 'pk',
                 'manufacturer' => $this->string(),
@@ -19,7 +20,7 @@ class m151030_084542_init_cars_table extends Migration
                 'FOREIGN KEY (owner) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE',
 
             ],
-            'ENGINE=InnoDB'
+            $tableOptions
         );
     }
 
