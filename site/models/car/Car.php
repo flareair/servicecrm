@@ -17,7 +17,7 @@ class Car extends ActiveRecord
     {
         return [
             [['manufacturer', 'model', 'owner'], 'required'],
-            [['manufacturer', 'model'], 'string'],
+            [['manufacturer', 'model', 'gov_number'], 'string'],
             [['owner', 'year'], 'integer'],
             [['date_in', 'date_out'], 'date', 'format'=>'yyyy-MM-dd HH:mm'],
             [['comment'], 'string']

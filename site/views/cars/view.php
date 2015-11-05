@@ -14,6 +14,7 @@ $this->title = 'View car ' . Html::encode("$model->manufacturer $model->model");
         'manufacturer',
         'model',
         'year',
+        'gov_number',
         'date_in',
         'date_out',
         'comment',

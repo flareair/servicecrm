@@ -13,8 +13,8 @@ class CarSearchModel extends Car
     {
         return [
             [['manufacturer'], 'safe'],
-            // [['role'], 'safe'],
-            // [['firstname'], 'safe'],
+            [['model'], 'safe'],
+            [['gov_number'], 'safe'],
             // [['lastname'], 'safe'],
             // [['company_name'], 'safe'],
         ];
@@ -44,6 +44,8 @@ class CarSearchModel extends Car
         // }
 
         $query->andFilterWhere(['like', 'manufacturer', $this->manufacturer]);
+        $query->andFilterWhere(['like', 'model', $this->model]);
+        $query->andFilterWhere(['like', 'gov_number', $this->gov_number]);
 
         return $dataProvider;
     }

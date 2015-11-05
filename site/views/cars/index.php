@@ -19,6 +19,7 @@ $this->title = 'List of cars';
         ['class' => 'yii\grid\SerialColumn'],
         'manufacturer',
         'model',
+        'gov_number',
         'date_in',
         [
             'label' => 'Owner',

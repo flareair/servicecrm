@@ -12,6 +12,7 @@ class m151030_084542_init_cars_table extends Migration
                 'id' => 'pk',
                 'manufacturer' => $this->string(),
                 'model' => $this->string(),
+                'gov_number' => $this->string(),
                 'year' => $this->integer(),
                 'date_in' => $this->dateTime(),
                 'date_out' => $this->dateTime(),

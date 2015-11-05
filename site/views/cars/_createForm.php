@@ -14,6 +14,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     <?= $form->field($model, 'manufacturer') ?>
     <?= $form->field($model, 'model') ?>
     <?= $form->field($model, 'year') ?>
+    <?= $form->field($model, 'gov_number') ?>
     <?= $form->field($model, 'date_in')->widget(DateTimePicker::className(), [
         'language' => 'en',
         'size' => 'ms',
